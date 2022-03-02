@@ -20,7 +20,7 @@ function Pokedex() {
 
   let display = pokemon
     .filter((poke, index) => {
-      return poke.name.includes(filter);
+      return poke.name.includes(filter.toLowerCase());
     })
     .map((poke, index) => {
       let id = poke.url.replace(/\D+/g, "").substring(1);
