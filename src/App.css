@@ -40,6 +40,10 @@ p {
   font-size: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
   position: absolute;
@@ -166,4 +170,8 @@ input {
   height: 40px;
   width: 250px;
   font-size: 22px;
+}
+
+.details-page {
+  width: 100%;
 }

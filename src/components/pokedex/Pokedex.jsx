@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Pokedex() {
   const [pokemon, setPokemon] = useState([]);
@@ -25,7 +26,7 @@ function Pokedex() {
     .map((poke, index) => {
       let id = poke.url.replace(/\D+/g, "").substring(1);
       return (
-        <div className="pokedex-entry">
+        <Link to={`/details/${id}`} className="pokedex-entry">
           <h4>{id}</h4>
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
@@ -33,7 +34,7 @@ function Pokedex() {
             className="pokedex-img"
           />
           <h4>{cap(poke.name)}</h4>
-        </div>
+        </Link>
       );
     });
 
