@@ -19,11 +19,11 @@ function Pokedex() {
   };
 
   let display = pokemon
-    .filter((pokemon, index) => {
-      return pokemon.name.includes(filter);
+    .filter((poke, index) => {
+      return poke.name.includes(filter);
     })
-    .map((pokemon, index) => {
-      let id = pokemon.url.replace(/\D+/g, "").substring(1);
+    .map((poke, index) => {
+      let id = poke.url.replace(/\D+/g, "").substring(1);
       return (
         <div className="pokedex-entry">
           <h4>{id}</h4>
@@ -32,7 +32,7 @@ function Pokedex() {
             alt=""
             className="pokedex-img"
           />
-          <h4>{cap(pokemon.name)}</h4>
+          <h4>{cap(poke.name)}</h4>
         </div>
       );
     });
