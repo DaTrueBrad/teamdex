@@ -16,6 +16,10 @@ function PKCompare({data, side}) {
         return 'Mr. Mime'
       case 'mr-rime':
         return 'Mr. Rime'
+      case 'special-attack':
+        return 'Sp. Attack'
+      case 'special-defense':
+        return 'Sp. Defense'
       default:
         string = string.split('-')[0]
         return string.charAt(0).toUpperCase() + string.slice(1);
