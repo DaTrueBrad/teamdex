@@ -1,11 +1,8 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Spinner from "../Spinner";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 
-function Details() {
+function PKCompare({data, side}) {
   const [pokemon, setPokemon] = useState([]);
-  const { id } = useParams();
 
   const cap = (string) => {
     switch(string) {
@@ -27,45 +24,45 @@ function Details() {
 
   const getData = () => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then((res) => setPokemon([res.data]));
+      .get(`https://pokeapi.co/api/v2/pokemon/${data}`)
+      .then((res) => {
+        setPokemon([res.data])
+      });
   };
-  // TODO Possibly add CSS classes for each pokemon type, and name it after each type, such as .flying, .grass, etc. Then, do an if statement where if they have two classes, return two spans, otherwise return one span.
+
+  useEffect(() => {
+    getData()
+  }, [data])
+
   const card = pokemon.map((pokemon, index) => {
     return (
-      <div className="details-page">
-        <Link to="/pokedex">Back</Link>
-        <div className="details-container">
-          <h1>{cap(pokemon.name)}</h1>
+      <div key={index}>
+      <div className="side-compare">
+          <h4>{cap(pokemon.name)}</h4>
           <img
             src={pokemon.sprites.other["official-artwork"]["front_default"]}
             alt=""
             className="pokedex-img"
           />
-          <h4>Weight: {pokemon.weight}</h4>
           <div className="type-container">
             {pokemon.types.map((type, index) => {
-              return <h4 className={type.type.name}>{cap(type.type.name)}</h4>;
+              return <h4 className={type.type.name} key={index}>{cap(type.type.name)}</h4>;
             })}
           </div>
           {pokemon.stats.map((stat, index) => {
             return (
-              <h4>
+              <h5 key={index}>
                 {cap(stat.stat.name)}: {stat.base_stat}
-              </h4>
+              </h5>
             );
           })}
           
         </div>
-      </div>
-    );
-  });
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  return card;
+    </div>
+    )
+  })
+  
+  return card
 }
 
-export default Details;
+export default PKCompare

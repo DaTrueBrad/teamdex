@@ -7,6 +7,7 @@ import Pokedex from "./components/pokedex/Pokedex";
 import Footer from "./components/Footer";
 import Header from "./components/menu/Header";
 import Details from './components/pokedex/Details'
+import Compare from "./components/compare/Compare";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="pokedex" element={<Pokedex />} />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="compare" element={<Compare />} />
         </Routes>
       </main>
       <Footer />
