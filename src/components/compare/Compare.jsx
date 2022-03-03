@@ -52,8 +52,8 @@ function Compare() {
           />
           <h4>{cap(poke.name)}</h4>
           <div className="button-container">
-            <button onClick={() => setLeft(id)}>Left</button>
-            <button onClick={() => setRight(id)}>Right</button>
+            <a href="#top"><button onClick={() => setLeft(id)}>Left</button></a>
+            <a href="#top"><button onClick={() => setRight(id)}>Right</button></a>
           </div>
         </div>
       );
@@ -69,7 +69,7 @@ function Compare() {
 
   return (
     <div>
-      <h1>Compare!</h1>
+      <h1 id="top">Compare!</h1>
       <h3>We've started with two random pokemon!</h3>
       <div className="compare-container">
         {left ? <PKCompare data={left} side="left"/> : <div classname="half-page-spacer">Pick a Pokemon</div>}

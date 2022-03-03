@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --red: #B80C09;
   --blue: #003F91;
@@ -49,6 +53,7 @@ a {
 }
 
 .App {
+  scroll-snap-type: y mandatory;
   text-align: center;
   position: absolute;
   top: 0;
