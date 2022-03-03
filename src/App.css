@@ -170,6 +170,11 @@ button:active {
   margin: 0 0 5px;
 }
 
+.pokedex-entry button {
+  width: 40%;
+  font-size: 16px;
+}
+
 .pokedex-img {
   width: 80%;
 }
