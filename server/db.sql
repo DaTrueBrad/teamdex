@@ -34,3 +34,99 @@ CREATE TABLE team_pokemon (
   pokemon_id int,
   FOREIGN KEY (team_id) REFERENCES teams(id)
 )
+
+INSERT INTO games (name, generation)
+VALUES (
+  'Red',
+    1
+), (
+  'Blue',
+    1
+), (
+  'Yellow',
+  1
+), (
+  'Gold',
+  2
+),(
+  'Silver',
+  2
+), (
+  '',
+  
+), (
+  'Crystal',
+  2
+), (
+  'Ruby',
+  3
+),(
+  'Sapphire',
+  3
+), (
+  'Emerald',
+  3
+),(
+  'FireRed',
+  3
+), (
+  'LeafGreen',
+  3
+),(
+  'Diamond',
+  4
+), (
+  'Pearl',
+  4
+),(
+  'Platinum',
+  4
+), (
+  'HeartGold',
+  4
+), (
+  'SoulSilver',
+  4
+),(
+  'Black',
+  5
+), (
+  'White',
+  5
+), (
+  'Black 2',
+  5
+), (
+  'White 2',
+  5
+), (
+  'X',
+  6
+), (
+  'Y',
+  6
+), (
+  'Omega Ruby',
+  6
+), (
+  'Omega Sapphire',
+  6
+), (
+  'Sun',
+  7
+), (
+  'Moon',
+  7
+), (
+  'Ultra Sun',
+  7
+), (
+  'Ultra Moon',
+  7
+), (
+  'Sword',
+  8
+), (
+  'Shield',
+  8
+)

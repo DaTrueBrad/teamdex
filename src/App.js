@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Header from "./components/menu/Header";
 import Details from './components/pokedex/Details'
 import Compare from "./components/compare/Compare";
+import Team from "./components/team/Team";
+import NewTeam from "./components/team/NewTeam";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="pokedex" element={<Pokedex />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="compare" element={<Compare />} />
+          <Route path="teams" element={<Team />} />
+          <Route path="teams/new" element={<NewTeam />} />
         </Routes>
       </main>
       <Footer />
