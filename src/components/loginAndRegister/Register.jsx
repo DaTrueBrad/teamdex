@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as Yup from "yup";
+import Swal from 'sweetalert2';
 
 function Register() {
 
@@ -31,7 +33,21 @@ function Register() {
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          console.log(values)
+          axios.post(`/api/registerUser`, values)
+          .then((res) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Hooray!!',
+              html: `This came back!<br></br>username: ${res.data.username} id: ${res.data.id}`
+            })
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops!',
+              text: err.response.data
+            })
+          })
         }}
       >
         {({ errors, touched, isValid }) => (

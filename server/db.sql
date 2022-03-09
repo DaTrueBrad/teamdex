@@ -5,7 +5,7 @@ CREATE TABLE images (
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  userame VARCHAR(25),
+  username VARCHAR(25),
   email varchar(100),
   password varchar(255),
   image int,

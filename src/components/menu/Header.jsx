@@ -1,9 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Menu from './Menu'
 
 function Header() {
   const [hidden, setHidden] = useState(true)
   const toggleMenu = () => setHidden(!hidden)
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => setHidden(true))
+  })
   
   return (
     <header>
