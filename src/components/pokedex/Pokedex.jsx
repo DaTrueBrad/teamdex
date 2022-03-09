@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import pokemonState from "../../state/allPokemon";
+import {useRecoilState} from 'recoil'
 
 function Pokedex() {
-  const [pokemon, setPokemon] = useState([]);
+  // const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useRecoilState(pokemonState)
   const [filter, setFilter] = useState("");
 
   const cap = (string) => {
@@ -24,11 +27,11 @@ function Pokedex() {
     }
   };
 
-  const getData = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=898").then((res) => {
-      setPokemon(res.data.results);
-    });
-  };
+  // const getData = () => {
+  //   axios.get("https://pokeapi.co/api/v2/pokemon?limit=898").then((res) => {
+  //     setPokemon(res.data.results);
+  //   });
+  // };
 
   let display = pokemon
     .filter((poke, index) => {
@@ -49,9 +52,9 @@ function Pokedex() {
       );
     });
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <div>

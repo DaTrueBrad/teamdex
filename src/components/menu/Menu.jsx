@@ -10,6 +10,7 @@ function Menu({hidden, toggleMenu}) {
       <NavLink to="/pokedex" onClick={toggleMenu}>Pokedex</NavLink>
       <NavLink to="/compare" onClick={toggleMenu}>Compare</NavLink>
       <NavLink to="/teams" onClick={toggleMenu}>Teams</NavLink>
+      <NavLink to="/login" onClick={toggleMenu}>Login / Register</NavLink>
     </div>
   )
 }

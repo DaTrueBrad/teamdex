@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import axios from 'axios'
 import "./App.css";
 import Menu from "./components/menu/Menu";
 import { Routes, Route } from "react-router-dom";
@@ -10,8 +10,20 @@ import Details from './components/pokedex/Details'
 import Compare from "./components/compare/Compare";
 import Team from "./components/team/Team";
 import NewTeam from "./components/team/NewTeam";
+import Login from "./components/loginAndRegister/Login";
+import Register from "./components/loginAndRegister/Register";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import pokemonState from "./state/allPokemon";
 
 function App() {
+  const [pokemon, setPokemon] = useRecoilState(pokemonState)
+
+  useEffect(() => {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=898").then((res) => {
+      setPokemon(res.data.results);
+    });
+  }, [])
   return (
     <div className="App">
       <Header />   
@@ -23,6 +35,8 @@ function App() {
           <Route path="compare" element={<Compare />} />
           <Route path="teams" element={<Team />} />
           <Route path="teams/new" element={<NewTeam />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Routes>
       </main>
       <Footer />

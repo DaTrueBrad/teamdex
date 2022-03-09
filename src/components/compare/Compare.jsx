@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PKCompare from "./PKCompare";
+import pokemonState from "../../state/allPokemon";
+import {useRecoilState} from 'recoil'
 
 function Compare() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useRecoilState(pokemonState);
   const [filter, setFilter] = useState("");
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
@@ -30,11 +32,6 @@ function Compare() {
     return Math.floor(Math.random() * (898) + 1)
   }
 
-  const getData = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=898").then((res) => {
-      setPokemon(res.data.results);
-    });
-  };
 
   let display = pokemon
     .filter((poke, index) => {
@@ -52,15 +49,14 @@ function Compare() {
           />
           <h4>{cap(poke.name)}</h4>
           <div className="button-container">
-            <a href="#top"><button onClick={() => setLeft(id)}>Left</button></a>
-            <a href="#top"><button onClick={() => setRight(id)}>Right</button></a>
+            <button onClick={() => setLeft(id)}>Left</button>
+            <button onClick={() => setRight(id)}>Right</button>
           </div>
         </div>
       );
     });
 
   useEffect(() => {
-    getData();
     const random1 = random()
     const random2 = random()
     setLeft(random1)
