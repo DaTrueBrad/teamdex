@@ -3,8 +3,10 @@ import { Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as Yup from "yup";
 import Swal from 'sweetalert2';
+import {useNavigate} from 'react-router-dom'
 
 function Register() {
+  const navigate = useNavigate()
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -39,6 +41,8 @@ function Register() {
               icon: 'success',
               title: 'Hooray!!',
               html: `This came back!<br></br>username: ${res.data.username} id: ${res.data.id}`
+            }).then((res) => {
+              navigate('/login')
             })
           })
           .catch((err) => {

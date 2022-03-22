@@ -123,6 +123,12 @@ button:active {
   color: white;
 }
 
+.md-btn {
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+}
+
 .lg-btn {
   width: 200px;
   height: 60px;
@@ -201,7 +207,7 @@ form {
   width: 80%;
 }
 
-input {
+input, select {
   height: 40px;
   width: 250px;
   font-size: 22px;

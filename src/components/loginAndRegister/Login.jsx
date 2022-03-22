@@ -2,6 +2,8 @@ import axios from "axios";
 import { Form, Formik, Field } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
+import {Link} from 'react-router-dom'
+
 
 function Login() {
   return (
@@ -37,7 +39,7 @@ function Login() {
         </Form>
       </Formik>
       <br />
-          <small>Not a user? <a href="/register">Click here!</a></small>
+          <small>Not a user? <Link to="/register">Click here!</Link></small>
     </div>
   );
 }

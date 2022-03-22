@@ -15,6 +15,7 @@ import Register from "./components/loginAndRegister/Register";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import pokemonState from "./state/allPokemon";
+import TeamDetails from './components/team/TeamDetails';
 
 function App() {
   const [pokemon, setPokemon] = useRecoilState(pokemonState)
@@ -37,6 +38,7 @@ function App() {
           <Route path="teams/new" element={<NewTeam />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="myTeam/:id" element={<TeamDetails />} />
         </Routes>
       </main>
       <Footer />
