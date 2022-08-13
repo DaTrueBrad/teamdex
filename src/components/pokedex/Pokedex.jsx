@@ -2,27 +2,28 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import pokemonState from "../../state/allPokemon";
-import {useRecoilState} from 'recoil'
+import { useRecoilState } from "recoil";
 
-function Pokedex() {
+function Pokedex({type, add}) {
   // const [pokemon, setPokemon] = useState([]);
-  const [pokemon, setPokemon] = useRecoilState(pokemonState)
+  const [scroll, setScroll] = useState(0);
+  const [pokemon, setPokemon] = useRecoilState(pokemonState);
   const [filter, setFilter] = useState("");
 
   const cap = (string) => {
-    switch(string) {
-      case 'ho-oh':
-        return 'Ho-oh'
-      case 'porygon-z':
-        return 'Porygon-Z'
-      case 'farfetchd':
-        return "Farfetch'd"
-      case 'mr-mime':
-        return 'Mr. Mime'
-      case 'mr-rime':
-        return 'Mr. Rime'
+    switch (string) {
+      case "ho-oh":
+        return "Ho-oh";
+      case "porygon-z":
+        return "Porygon-Z";
+      case "farfetchd":
+        return "Farfetch'd";
+      case "mr-mime":
+        return "Mr. Mime";
+      case "mr-rime":
+        return "Mr. Rime";
       default:
-        string = string.split('-')[0]
+        string = string.split("-")[0];
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
   };
@@ -40,7 +41,8 @@ function Pokedex() {
     .map((poke, index) => {
       let id = poke.url.replace(/\D+/g, "").substring(1);
       return (
-        <Link to={`/details/${id}`} className="pokedex-entry" key={index}>
+        <div className="pokedex-entry">
+        <Link to={`/details/${id}`} key={index}>
           <h4>{id}</h4>
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
@@ -48,17 +50,27 @@ function Pokedex() {
             className="pokedex-img"
           />
           <h4>{cap(poke.name)}</h4>
+          {/* //TODO we can turn this into a reusable component for the TeamDetails  */}
         </Link>
+          {type === "team" && <button onClick={() => add(id)}>Add</button>}
+        </div>
       );
     });
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      setScroll(window.scrollY);
+    });
+  }, []);
 
   return (
     <div>
       <h1>Pokedex</h1>
+      
+        <a className="to-top" id={window.scrollY < 400 && "hide-top"} href="#top">
+          ^
+        </a>
+      
       <input
         type="text"
         placeholder="Search"

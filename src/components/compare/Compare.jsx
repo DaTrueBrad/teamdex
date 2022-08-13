@@ -6,6 +6,7 @@ import pokemonState from "../../state/allPokemon";
 import {useRecoilState} from 'recoil'
 
 function Compare() {
+  const [scroll, setScroll] = useState(0)
   const [pokemon, setPokemon] = useRecoilState(pokemonState);
   const [filter, setFilter] = useState("");
   const [left, setLeft] = useState(0)
@@ -61,14 +62,22 @@ function Compare() {
     const random2 = random()
     setLeft(random1)
     setRight(random2)
+    window.addEventListener("scroll", (e) => {
+      setScroll(window.scrollY);
+    });
   }, []);
 
   return (
     <div>
       <h1 id="top">Compare!</h1>
+      {window.scrollY > 400 ? (
+        <a className="to-top" href="#top">
+          ^
+        </a>
+      ) : null}
       <h3>We've started with two random pokemon!</h3>
       <div className="compare-container">
-        {left ? <PKCompare data={left} side="left"/> : <div classname="half-page-spacer">Pick a Pokemon</div>}
+        {left ? <PKCompare data={left} side="left"/> : <div className="half-page-spacer">Pick a Pokemon</div>}
         <PKCompare data={right} side="right"/>
       </div>
       <input

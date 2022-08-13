@@ -39,7 +39,6 @@ module.exports = {
     const validUser = await sequelize.query(`
     SELECT * FROM users WHERE username = '${username}'
   `).catch((err) => console.log(err))
-  console.log(validUser)
   if(validUser[1].rowCount === 1) {
     if (bcrypt.compareSync(password, validUser[0][0].password)) {
       let object = {

@@ -34,7 +34,7 @@ function Details() {
   const card = pokemon.map((pokemon, index) => {
     return (
       <div className="details-page">
-        <Link to="/pokedex">Back</Link>
+        <Link to="/pokedex"><button className="sm-btn">Back</button></Link>
         <div className="details-container">
           <h1>{cap(pokemon.name)}</h1>
           <img

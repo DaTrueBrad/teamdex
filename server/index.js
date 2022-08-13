@@ -20,5 +20,7 @@ app.get('/allGames', poke.allGames)
 app.post('/api/newTeam', poke.newTeam)
 app.get('/api/myTeams/:id', poke.myTeams)
 app.get('/api/myTeam/:id', poke.myTeam)
+app.post('/api/addToTeam', poke.addToTeam)
+app.delete('/api/deletePoke', poke.deletePoke)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

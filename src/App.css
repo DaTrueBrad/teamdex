@@ -9,7 +9,7 @@ html {
 :root {
   --red: #B80C09;
   --blue: #003F91;
-  --yellow: #FEE440;
+  --yellow: #FFDC00;
   --gray: #222222;
   --font-one: "Montserrat Alternates"
 }
@@ -19,7 +19,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-  color: var(--blue);
+  color: var(--yellow);
   font-family: var(--font-one);
 }
 
@@ -44,7 +44,7 @@ h5 {
 }
 
 p {
-  color: var(--gray);
+  color: white;
   font-size: 20px;
 }
 
@@ -59,14 +59,15 @@ a {
   top: 0;
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(
+  background-color: #353535;
+  /* background: linear-gradient(
     rgba(255, 255, 255, 0.8), 
     rgba(255, 255, 255, 0.8)
   ), url('./assets/pokeball.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
   padding: 5px 0px 0px 0px;
   display: flex;
   flex-direction: column;
@@ -84,22 +85,26 @@ main {
 header {
   height: 75px;
   width: 100%;
-  background-color: var(--red);
+  background-color: var(--gray);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 5px;
+  padding: 0px 15px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 3;
 }
 
+header img {
+  height: 80%;
+}
+
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--blue);
+  background-color: var(--gray);
   color: white;
   height: 60px;
   display: flex;
@@ -109,11 +114,19 @@ footer {
   font-size: 13px;
 }
 
+small {
+  color: white;
+}
+
+small a {
+  color: var(--yellow);
+}
+
 button {
   background: var(--yellow);
   color: var(--gray);
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
   transition: all 0.1s ease-in-out;
 }
@@ -125,7 +138,7 @@ button:active {
 
 .md-btn {
   width: 100px;
-  height: 30px;
+  height: 44px;
   font-size: 20px;
 }
 
@@ -136,7 +149,7 @@ button:active {
 }
 
 .nav-menu {
-  background-color: var(--red);
+  background-color: var(--gray);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,6 +171,10 @@ button:active {
 
 }
 
+#invisible {
+  display: none;
+}
+
 #hidden {
   right: -250px;
   transition: all 0.3s ease-in-out;
@@ -168,6 +185,7 @@ form {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  
 }
 
 .error {
@@ -175,6 +193,25 @@ form {
   font-size: 18px;
   font-weight: 600;
   text-shadow: 0px 1px 2px rgba(0,0,0,0.8);
+}
+
+.to-top {
+  color: var(--gray);
+  font-size: 36px;
+  background-color: rgba(255,220,0,0.8);
+  border-radius: 4px;
+  padding: 0px;
+  width: 50vw;
+  position: fixed;
+  top: 100px;
+  z-index: 1;
+  left:25vw;
+  transition: all 0.3s ease-in-out;
+}
+
+#hide-top {
+  top: -200px;
+  transition: all 0.3s ease-in-out;
 }
 
 .pokedex-container {
@@ -189,9 +226,10 @@ form {
 .pokedex-entry {
   width: 45%;
   padding: 5px 5px 10px;
-  border: 2px solid var(--blue);
+  /* border: 1px solid var(--yellow); */
   border-radius: 8px;
-  background-color: white;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
+  background-color: #222222;
 }
 
 .pokedex-entry h4{
@@ -245,7 +283,9 @@ input, select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid var(--blue);
+  /* border: 2px solid var(--blue); */
+  background-color: #222222;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.5);
   border-radius: 8px;
 }
 .side-compare h5 {

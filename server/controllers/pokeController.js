@@ -44,5 +44,24 @@ module.exports = {
       pokemon: pokemon[0]
     }
     res.status(200).send(allInfo)
+  },
+  addToTeam: async (req, res) => {
+    let {pokemonID, teamID} = req.body
+    await sequelize.query(`
+      INSERT INTO team_pokemon(team_id, pokemon_id)
+      VALUES(
+        ${teamID},
+        ${pokemonID}
+      )
+    `)
+    res.status(200).send("Successfully added!")
+  },
+  deletePoke: async (req, res) => {
+    let {poke_id, team_id} = req.body
+    await sequelize.query(`
+      DELETE FROM team_pokemon
+      where id = ${poke_id}
+    `)
+    res.status(200).send("delete hit!")
   }
 }

@@ -27,11 +27,13 @@ function PKCompare({data, side}) {
   };
 
   const getData = () => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${data}`)
-      .then((res) => {
-        setPokemon([res.data])
-      });
+    if(data) {
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${data}`)
+        .then((res) => {
+          setPokemon([res.data])
+        });
+    }
   };
 
   useEffect(() => {

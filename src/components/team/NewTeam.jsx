@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Field, Formik } from 'formik'
 import Swal from 'sweetalert2'
+import {useCookies} from 'react-cookie'
 
 function NewTeam() {
   const [games, setGames] = useState([])
   const [team, setTeam] = useState([])
+  const [cookies, setCookie, removeCookie] = useCookies(["userID", "username"])
   const navigate = useNavigate()
   const goBack = () => navigate("/teams")
  
@@ -35,8 +37,7 @@ function NewTeam() {
         }}
         onSubmit={(values) => {
           values.team = team
-          //TODO UN-HARDCODE THE USER ID
-          values.userID = 1
+          values.userID = cookies.userID
           console.log(values)
           axios.post('/api/newTeam', values)
           .then((res) => {

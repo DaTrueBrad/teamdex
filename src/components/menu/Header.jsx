@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Menu from './Menu'
+import Logo from '../../assets/Logo.png'
 
 function Header() {
   const [hidden, setHidden] = useState(true)
@@ -11,8 +12,8 @@ function Header() {
   
   return (
     <header>
-      <p>Team Dex</p>
-      <box-icon name="menu" size="lg" color="#222222" onClick={toggleMenu}></box-icon>
+      <img src={Logo} alt="" />
+      <box-icon name="menu" size="lg" color="#fff" onClick={toggleMenu}></box-icon>
       <Menu hidden={hidden} toggleMenu={toggleMenu}/>
     </header>
   )
