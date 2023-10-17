@@ -4,13 +4,16 @@ import pokemonState from "../../state/allPokemon";
 import { useRecoilState } from "recoil";
 
 function TeamCard({ item, deletePokemon }) {
+  console.log("ITEM", item)
   const [pokemon, setPokemon] = useRecoilState(pokemonState);
-  const name = useName(pokemon[item.pokemon_id - 1].name);
+  const name = useName(pokemon[item.pokemonId - 1].name);
+
+  //make an axios call with the id
   return (
     <div className="pokedex-entry">
       <h4>{item.pokemon_id}</h4>
       <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.pokemon_id}.png`}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.pokemonId}.png`}
         alt=""
         className="pokedex-img"
       />

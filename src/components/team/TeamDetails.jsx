@@ -22,11 +22,12 @@ function TeamDetails() {
     axios
       .get(`/api/myTeam/${id}`)
       .then((res) => {
-        setDetails(res.data.details);
-        setPokemonID(res.data.pokemon);
-        console.log(res.data.pokemon);
-        console.log(res.data.details);
-        console.log(pokemon);
+        console.log(res.data)
+        setDetails(res.data);
+        setPokemonID(res.data.pokemons);
+        // console.log(res.data.pokemon);
+        // console.log(res.data.details);
+        // console.log(pokemon);
       })
   }
 
@@ -52,11 +53,11 @@ function TeamDetails() {
       })
   }
 
-  const DisplayPokemon = pokemonID.map((item, index) => {
+  const DisplayPokemon = pokemonID.length !== 0 && pokemonID.map((item, index) => {
     return <TeamCard item={item} deletePokemon={deletePokemon}/>;
   });
 
-  
+
 
   useEffect(() => {
     getData()
@@ -66,8 +67,8 @@ function TeamDetails() {
   return (
     <div>
       <button onClick={goBack}>{"<"} Back</button>
-      <h1>{details.name}</h1>
-      <h3>{details.notes}</h3>
+      <h1>{details?.name}</h1>
+      <h3>{details?.notes}</h3>
       <div className="pokedex-container">
         {DisplayPokemon}
         {pokemonID.length < 6 && <div>
